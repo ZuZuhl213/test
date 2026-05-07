@@ -31,7 +31,7 @@ describe('Doctor Profile Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-PROF-001
   // CheckDB: Không
   // Rollback: Không
-  it('should_return_doctor_profile_by_account_id_successfully', async () => {
+  it('trả_về_hồ_sơ_bác_sĩ_theo_account_id_thành_công', async () => {
     const req = { params: { accountId: new mongoose.Types.ObjectId().toString() } };
     const res = mockRes();
 
@@ -50,7 +50,7 @@ describe('Doctor Profile Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-PROF-002
   // CheckDB: Không
   // Rollback: Không
-  it('should_return_400_when_account_id_is_invalid', async () => {
+  it('trả_về_400_khi_account_id_không_hợp_lệ', async () => {
     const req = { params: { accountId: 'invalid-id' } };
     const res = mockRes();
 
@@ -63,7 +63,7 @@ describe('Doctor Profile Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-PROF-003
   // CheckDB: Không
   // Rollback: Không
-  it('should_return_404_when_doctor_profile_not_found', async () => {
+  it('trả_về_404_khi_không_tìm_thấy_hồ_sơ_bác_sĩ', async () => {
     const req = { params: { accountId: new mongoose.Types.ObjectId().toString() } };
     const res = mockRes();
 
@@ -80,7 +80,7 @@ describe('Doctor Profile Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-PROF-004
   // CheckDB: Có
   // Rollback: Không
-  it('should_update_doctor_name_phone_successfully', async () => {
+  it('cập_nhật_tên_và_số_điện_thoại_bác_sĩ_thành_công', async () => {
     const doctorId = new mongoose.Types.ObjectId().toString();
     const req = {
       params: { id: doctorId },
@@ -103,7 +103,7 @@ describe('Doctor Profile Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-PROF-005
   // CheckDB: Có
   // Rollback: Không
-  it('should_return_404_when_updating_non_existing_doctor', async () => {
+  it('trả_về_404_khi_cập_nhật_bác_sĩ_không_tồn_tại', async () => {
     const req = {
       params: { id: new mongoose.Types.ObjectId().toString() },
       body: { name: 'Nobody' },
@@ -121,7 +121,7 @@ describe('Doctor Profile Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-PROF-006
   // CheckDB: Có
   // Rollback: Không
-  it('should_sync_account_avatar_when_doctor_avatar_updated', async () => {
+  it('đồng_bộ_avatar_account_khi_avatar_bác_sĩ_được_cập_nhật', async () => {
     const doctorId = new mongoose.Types.ObjectId().toString();
     const accountId = new mongoose.Types.ObjectId().toString();
     const req = {
@@ -147,7 +147,7 @@ describe('Doctor Profile Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-PROF-007
   // CheckDB: Có
   // Rollback: Không
-  it('should_update_doctor_bio_successfully', async () => {
+  it('cập_nhật_bio_bác_sĩ_thành_công', async () => {
     const id = new mongoose.Types.ObjectId().toString();
     const req = { params: { id }, body: { bio: 'New bio' } };
     const res = mockRes();
@@ -163,7 +163,7 @@ describe('Doctor Profile Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-PROF-008
   // CheckDB: Không
   // Rollback: Không
-  it('should_return_400_when_bio_is_not_string', async () => {
+  it('trả_về_400_khi_bio_không_phải_chuỗi', async () => {
     const req = { params: { id: new mongoose.Types.ObjectId().toString() }, body: { bio: 123 } };
     const res = mockRes();
 
@@ -178,7 +178,7 @@ describe('Doctor Profile Unit Test Skeleton', () => {
   // Rollback: Không
   // Theo kỳ vọng nghiệp vụ: số điện thoại cần đúng format trước khi lưu.
   // Test này chủ đích tìm bug, hiện dự kiến FAIL vì controller updateDoctor chưa validate format phone.
-  it('should_reject_update_when_phone_format_is_invalid', async () => {
+  it('từ_chối_cập_nhật_khi_định_dạng_số_điện_thoại_không_hợp_lệ', async () => {
     const doctorId = new mongoose.Types.ObjectId().toString();
     const req = {
       params: { id: doctorId },

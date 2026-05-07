@@ -107,7 +107,7 @@ describe('Doctor Examination Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-EXAM-001
   // CheckDB: Không
   // Rollback: Không
-  it('should_get_doctor_today_appointments_successfully', async () => {
+  it('lấy_danh_sách_lịch_hẹn_hôm_nay_của_bác_sĩ_thành_công', async () => {
     const req = { params: { accountId: 'acc-1' }, query: {} };
     const res = mockRes();
 
@@ -129,7 +129,7 @@ describe('Doctor Examination Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-EXAM-002
   // CheckDB: Không
   // Rollback: Không
-  it('should_return_404_when_doctor_not_found_for_today_appointments', async () => {
+  it('trả_về_404_khi_không_tìm_thấy_bác_sĩ_cho_lịch_hẹn_hôm_nay', async () => {
     const req = { params: { accountId: 'acc-missing' }, query: {} };
     const res = mockRes();
 
@@ -143,7 +143,7 @@ describe('Doctor Examination Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-EXAM-003
   // CheckDB: Không
   // Rollback: Không
-  it('should_return_empty_list_when_no_today_appointments', async () => {
+  it('trả_về_danh_sách_rỗng_khi_không_có_lịch_hẹn_hôm_nay', async () => {
     const req = { params: { accountId: 'acc-1' }, query: {} };
     const res = mockRes();
 
@@ -163,7 +163,7 @@ describe('Doctor Examination Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-EXAM-004
   // CheckDB: Không
   // Rollback: Không
-  it('should_return_400_when_creating_lab_order_without_items', async () => {
+  it('trả_về_400_khi_tạo_chỉ_định_cls_không_có_items', async () => {
     const req = { body: { healthProfile_id: new mongoose.Types.ObjectId().toString(), items: [] } };
     const res = mockRes();
 
@@ -175,7 +175,7 @@ describe('Doctor Examination Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-EXAM-005
   // CheckDB: Không
   // Rollback: Không
-  it('should_return_400_when_lab_order_health_profile_id_invalid', async () => {
+  it('trả_về_400_khi_health_profile_id_của_cls_không_hợp_lệ', async () => {
     const req = {
       body: {
         healthProfile_id: 'invalid',
@@ -192,7 +192,7 @@ describe('Doctor Examination Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-EXAM-006
   // CheckDB: Có
   // Rollback: Không
-  it('should_create_lab_order_successfully_with_valid_services', async () => {
+  it('tạo_chỉ_định_cls_thành_công_với_dịch_vụ_hợp_lệ', async () => {
     const hpId = new mongoose.Types.ObjectId().toString();
     const svcId = new mongoose.Types.ObjectId().toString();
     const req = {
@@ -221,7 +221,7 @@ describe('Doctor Examination Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-EXAM-007
   // CheckDB: Không
   // Rollback: Có
-  it('should_return_400_when_creating_prescription_without_items', async () => {
+  it('trả_về_400_khi_tạo_đơn_thuốc_không_có_items', async () => {
     const req = { body: { healthProfile_id: new mongoose.Types.ObjectId().toString(), items: [] } };
     const res = mockRes();
 
@@ -234,7 +234,7 @@ describe('Doctor Examination Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-EXAM-008
   // CheckDB: Không
   // Rollback: Có
-  it('should_return_400_when_prescription_health_profile_id_invalid', async () => {
+  it('trả_về_400_khi_health_profile_id_của_đơn_thuốc_không_hợp_lệ', async () => {
     const req = {
       body: {
         healthProfile_id: 'bad-id',
@@ -252,7 +252,7 @@ describe('Doctor Examination Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-EXAM-009
   // CheckDB: Có
   // Rollback: Có
-  it('should_create_prescription_and_commit_transaction_successfully', async () => {
+  it('tạo_đơn_thuốc_và_commit_transaction_thành_công', async () => {
     const hpId = new mongoose.Types.ObjectId().toString();
     const medId = new mongoose.Types.ObjectId().toString();
     const req = {
@@ -291,7 +291,7 @@ describe('Doctor Examination Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-EXAM-010
   // CheckDB: Có
   // Rollback: Có
-  it('should_abort_transaction_when_prescription_stock_is_insufficient', async () => {
+  it('abort_transaction_khi_tồn_kho_thuốc_không_đủ', async () => {
     const hpId = new mongoose.Types.ObjectId().toString();
     const medId = new mongoose.Types.ObjectId().toString();
     const req = {
@@ -314,7 +314,7 @@ describe('Doctor Examination Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-EXAM-011
   // CheckDB: Không
   // Rollback: Không
-  it('should_return_400_when_create_treatment_missing_required_fields', async () => {
+  it('trả_về_400_khi_lưu_ca_khám_thiếu_trường_bắt_buộc', async () => {
     const req = { body: { doctor: 'd1' } };
     const res = mockRes();
 
@@ -327,7 +327,7 @@ describe('Doctor Examination Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-EXAM-012
   // CheckDB: Có
   // Rollback: Không
-  it('should_create_treatment_and_generate_invoice_when_inputs_are_valid', async () => {
+  it('tạo_ca_khám_và_sinh_hóa_đơn_khi_dữ_liệu_hợp_lệ', async () => {
     const hpId = new mongoose.Types.ObjectId().toString();
     const doctorId = new mongoose.Types.ObjectId().toString();
     const appointmentId = new mongoose.Types.ObjectId().toString();
@@ -381,7 +381,7 @@ describe('Doctor Examination Unit Test Skeleton', () => {
   // Rollback: Có (kỳ vọng theo nghiệp vụ)
   // Theo nghiệp vụ "lưu ca khám" cần đồng thời tạo hóa đơn; nếu tạo hóa đơn lỗi thì nên fail toàn bộ.
   // Test này chủ đích tìm bug, hiện dự kiến FAIL vì code đang nuốt lỗi invoice và vẫn trả 201.
-  it('should_fail_create_treatment_when_invoice_creation_fails', async () => {
+  it('thất_bại_tạo_ca_khám_khi_tạo_hóa_đơn_lỗi', async () => {
     const hpId = new mongoose.Types.ObjectId().toString();
     const doctorId = new mongoose.Types.ObjectId().toString();
     const appointmentId = new mongoose.Types.ObjectId().toString();

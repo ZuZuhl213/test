@@ -44,7 +44,7 @@ describe('Doctor Schedule Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-SCH-001
   // CheckDB: Không
   // Rollback: Không
-  it('should_get_month_appointments_by_doctor_successfully', async () => {
+  it('lấy_lịch_hẹn_theo_tháng_của_bác_sĩ_thành_công', async () => {
     const req = {
       params: { accountId: 'acc-1' },
       query: { date: '2026-05-01' },
@@ -66,7 +66,7 @@ describe('Doctor Schedule Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-SCH-002
   // CheckDB: Không
   // Rollback: Không
-  it('should_return_400_when_month_query_date_is_invalid', async () => {
+  it('trả_về_400_khi_tham_số_ngày_tháng_không_hợp_lệ', async () => {
     const req = { params: { accountId: 'acc-1' }, query: { date: 'invalid-date' } };
     const res = mockRes();
 
@@ -80,7 +80,7 @@ describe('Doctor Schedule Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-SCH-003
   // CheckDB: Không
   // Rollback: Không
-  it('should_return_404_when_doctor_not_found_in_month_schedule', async () => {
+  it('trả_về_404_khi_không_tìm_thấy_bác_sĩ_trong_lịch_tháng', async () => {
     const req = { params: { accountId: 'acc-missing' }, query: {} };
     const res = mockRes();
 
@@ -94,7 +94,7 @@ describe('Doctor Schedule Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-SCH-004
   // CheckDB: Có
   // Rollback: Không
-  it('should_confirm_appointment_successfully', async () => {
+  it('xác_nhận_lịch_hẹn_thành_công', async () => {
     const req = { params: { id: new mongoose.Types.ObjectId().toString() } };
     const res = mockRes();
 
@@ -125,7 +125,7 @@ describe('Doctor Schedule Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-SCH-005
   // CheckDB: Có
   // Rollback: Không
-  it('should_return_404_when_confirming_non_existing_appointment', async () => {
+  it('trả_về_404_khi_xác_nhận_lịch_hẹn_không_tồn_tại', async () => {
     const req = { params: { id: new mongoose.Types.ObjectId().toString() } };
     const res = mockRes();
 
@@ -139,7 +139,7 @@ describe('Doctor Schedule Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-SCH-006
   // CheckDB: Có
   // Rollback: Không
-  it('should_confirm_appointment_even_when_patient_not_found_and_skip_email', async () => {
+  it('vẫn_xác_nhận_lịch_hẹn_khi_không_tìm_thấy_bệnh_nhân_và_bỏ_qua_gửi_email', async () => {
     const req = { params: { id: new mongoose.Types.ObjectId().toString() } };
     const res = mockRes();
 
@@ -165,7 +165,7 @@ describe('Doctor Schedule Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-SCH-007
   // CheckDB: Có
   // Rollback: Không
-  it('should_confirm_appointment_even_when_patient_email_missing_and_skip_email', async () => {
+  it('vẫn_xác_nhận_lịch_hẹn_khi_thiếu_email_bệnh_nhân_và_bỏ_qua_gửi_email', async () => {
     const req = { params: { id: new mongoose.Types.ObjectId().toString() } };
     const res = mockRes();
 
@@ -191,7 +191,7 @@ describe('Doctor Schedule Unit Test Skeleton', () => {
   // TC: TC-UT-DOC-SCH-008
   // CheckDB: Không
   // Rollback: Không
-  it('should_get_appointments_by_doctor_with_sorted_timeslot_pipeline', async () => {
+  it('lấy_lịch_hẹn_theo_bác_sĩ_với_pipeline_sắp_xếp_theo_khung_giờ', async () => {
     const req = { params: { accountId: 'acc-1' }, query: {} };
     const res = mockRes();
 
@@ -215,7 +215,7 @@ describe('Doctor Schedule Unit Test Skeleton', () => {
   // Rollback: Không
   // Theo nghiệp vụ: chỉ lịch "Chờ xác nhận" mới được xác nhận.
   // Test này chủ đích tìm bug, hiện dự kiến FAIL với code hiện tại.
-  it('should_reject_confirm_when_appointment_status_is_not_pending', async () => {
+  it('từ_chối_xác_nhận_khi_trạng_thái_lịch_hẹn_không_phải_pending', async () => {
     const req = { params: { id: new mongoose.Types.ObjectId().toString() } };
     const res = mockRes();
 
